@@ -6,7 +6,7 @@ def Projection1(table : list, nomColonne : 'string') -> list:
             colIndex = i
             break
     if (colIndex == -1):
-        return []
+        return [table[0]]
 
     newTable = []
     
@@ -15,7 +15,9 @@ def Projection1(table : list, nomColonne : 'string') -> list:
 
     return newTable
 
-def Selection(table : list, nomColonne : 'string', fonctionComparaison : 'fonction lambda'):
+#Comment faire une fonction lambda
+#https://www.w3schools.com/python/python_lambda.asp
+def Selection(table : list, nomColonne : 'string', comp : 'fonction lambda'):
     colIndex = -1
 
     for i in range(len(table[0])):
@@ -23,12 +25,12 @@ def Selection(table : list, nomColonne : 'string', fonctionComparaison : 'foncti
             colIndex = i
             break
     if (colIndex == -1):
-        return []
+        return [table[0]]
 
     newTable = []
     newTable.append(table[0])
     for i in range(1, len(table)):
-        if(fonctionComparaison(table[i][colIndex])):
+        if(comp(table[i][colIndex])):
             newTable.append(table[i])
 
     return newTable
